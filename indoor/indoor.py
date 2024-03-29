@@ -1,3 +1,3 @@
 x = input("Введите текст:")
-s = x.capitalize()
+s = x.lower()
 print (s)
