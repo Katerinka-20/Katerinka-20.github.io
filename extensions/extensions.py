@@ -1,8 +1,5 @@
 def main():
-    # Запрос имени файла у пользователя
     file_name = input("File name: ")
-
-    # Определение типа файла по расширению
     if file_name.lower().endswith(".gif"):
         print("image/gif")
     elif file_name.lower().endswith(".jpg") or file_name.lower().endswith(".jpeg"):
