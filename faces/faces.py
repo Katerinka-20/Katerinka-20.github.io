@@ -1,4 +1,4 @@
-python
+
 def convert(text):
     text = text.replace(":)", "🙂")
     text = text.replace(":(", "🙁")
@@ -9,6 +9,4 @@ def main():
     result = convert(input_text)
     print("Результат:", result)
 
-# Вызов функции main для запуска программы
-if __name__ == "__main__":
     main()
