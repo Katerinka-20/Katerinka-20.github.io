@@ -4,7 +4,7 @@ def convert(text):
     return text
 
 def main():
-    input_text = input("Введите текст: ", )
+    input_text = input()
     result = convert(input_text)
     print(result)
 
