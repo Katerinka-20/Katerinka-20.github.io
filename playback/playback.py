@@ -1,3 +1,4 @@
 x = input()
-s = x.lower()
+s = x.replace(" ", "...")
 print (s)
+
