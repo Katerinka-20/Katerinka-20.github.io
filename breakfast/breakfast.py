@@ -6,16 +6,17 @@ menu = {
    "пирожное": 45.50
 }
 
-total_cost = 0  # Инициализация суммарной стоимости заказа
+total_cost = 0
 
-# Цикл для ввода блюд пользователем
+
 while True:
     try:
-        item = input("Блюдо: ").lower()  # Приводим введенное значение к нижнему регистру
+        item = input("Блюдо: ").lower()
         if item in menu:
             total_cost += menu[item]
-    except EOFError:  # Пользователь нажал control-d
+    except EOFError:
         break
 
-# Выводим суммарную стоимость заказа с двумя знаками после запятой
+
+print()
 print(f"Сумма: {total_cost:.2f}")
