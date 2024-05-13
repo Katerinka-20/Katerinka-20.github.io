@@ -20,7 +20,12 @@ def main():
         fraction_input = input("Дробь: ")
         result = calculate_fuel_percentage(fraction_input)
         if result is not None:
-            print(result)
+            if result == 'E':
+                print(result)
+            elif result == 'F':
+                print(result)
+            else:
+                print(result, end='')
             break
         else:
             print("Пожалуйста, введите корректную дробь.")
