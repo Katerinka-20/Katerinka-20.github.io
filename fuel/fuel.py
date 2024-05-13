@@ -25,7 +25,7 @@ def main():
             elif result == 'F':
                 print(result)
             else:
-                print(result, end='')
+                print(result)
             break
         else:
             print("Пожалуйста, введите корректную дробь.")
