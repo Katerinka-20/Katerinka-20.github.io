@@ -1,40 +1,27 @@
-python
-try:
-    months = ["январь", "февраль", "март", "апрель",
-              "май", "июнь", "июль", "август", "сентябрь", "октябрь",
-              "ноябрь", "декабрь"]
+def get_month_number(month_name):
+    months = ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"]
+    return months.index(month_name) + 1
 
-    def get_iso_date(date_str):
+def convert_to_iso(date_str):
+    parts = date_str.split('.')
+    if len(parts) == 3:
+        day, month, year = parts
+    else:
         parts = date_str.split()
-        if len(parts) == 3:
-            day, month, year = parts
-            if month.isdigit():
-                month = int(month)
-                if 1 <= month <= 12:
-                    month = months[month - 1]
-                else:
-                    return None
-            else:
-                month = month.lower()
-                if month not in months:
-                    return None
-            month_index = months.index(month) + 1
-            return f"{year}-{month_index:02d}-{int(day):02d}"
-        else:
-            return None
+        day = parts[0]
+        month = get_month_number(parts[1].lower())
+        year = parts[2]
+    return f"{year}-{month:02}-{day:02}"
 
-    def main():
-        while True:
-            date_input = input("Дата: ")
-            iso_date = get_iso_date(date_input)
-            if iso_date:
-                print(iso_date)
-                break
-            else:
-                print("Неправильный формат. Попробуйте еще раз.")
+def main():
+    while True:
+        date = input("Дата: ")
+        try:
+            iso_date = convert_to_iso(date)
+            print(iso_date)
+            break
+        except (IndexError, ValueError):
+            print("Неверный формат даты. Пожалуйста, введите дату снова.")
 
-    if __name__ == "__main__":
-        main()
-
-except EOFError:
-    print("Ошибка ввода: Ввод закрыт. Попробуйте выполнить программу еще раз.")
+if __name__ == "__main__":
+    main()
