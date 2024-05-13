@@ -38,5 +38,10 @@ while True:
 day, month_str, year = date.split('.')
 month = get_month_number(month_str)  # Получаем номер месяца
 
+# Проверка на корректность дня
+if int(day) < 1 or int(day) > 31:
+    print("Неправильный формат даты. Попробуйте еще раз.")
+    exit()
+
 # Форматируем вывод с нулем впереди при необходимости
 print(f"{year}-{month:02}-{day:02}")
