@@ -20,11 +20,9 @@ def camelcase_to_snake_case(s):
     )
 
 def main():
-    temp = (input("Р’РµСЂР±Р»СЋР¶РёР№ СЃС‚РёР»СЊ: "))
+    temp = (input("Верблюжий стиль: "))
     result = camelcase_to_snake_case(temp)
     print(result)
 
 if __name__ == "__main__":
     main()
-
-
