@@ -8,12 +8,19 @@ def is_valid_date(date_str):
     if len(parts) != 3:
         return False
     day, month, year = parts
-    if not (day.isdigit() and month.isdigit() and year.isdigit()):
+    if not (day.isdigit() and month.replace(' ', '').isdigit() and year.isdigit()):
         return False
     month = int(month)
     if month < 1 or month > 12:
         return False
     return True
+
+# Функция для получения номера месяца
+def get_month_number(month_str):
+    try:
+        return int(month_str.replace(' ', ''))
+    except ValueError:
+        return months.index(month_str.lower()) + 1
 
 # Цикл для ввода даты в старом формате
 while True:
@@ -29,7 +36,7 @@ while True:
 
 # Разбиваем введенную дату на составляющие
 day, month_str, year = date.split('.')
-month = months.index(month_str) + 1  # Получаем номер месяца
+month = get_month_number(month_str)  # Получаем номер месяца
 
 # Форматируем вывод с нулем впереди при необходимости
 print(f"{year}-{month:02}-{day:02}")
