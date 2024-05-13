@@ -17,7 +17,7 @@ def main():
 
         if dish in menu:
             total_cost += menu[dish]
-            print("Блюдо: ", end='', flush=True) # Принимает следующий ввод без переноса строки и сбрасывает буфер вывода
+            print("Блюдо: ", end='', flush=True)  # Принимает следующий ввод без переноса строки и сбрасывает буфер вывода
 
     print(f"\nСумма: {total_cost:.2f}")
 
