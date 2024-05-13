@@ -3,9 +3,9 @@ def get_month_number(month_name):
     return months.index(month_name) + 1
 
 def convert_to_iso(date_str):
-    parts = date_str.split('.')
+    parts = date_str.split('-')
     if len(parts) == 3:
-        day, month, year = parts
+        year, month, day = parts
     else:
         parts = date_str.split()
         day = parts[0]
