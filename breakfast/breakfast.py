@@ -17,8 +17,9 @@ def main():
 
         if dish in menu:
             total_cost += menu[dish]
+            print("Блюдо: ", end='') # Принимает следующий ввод без переноса строки
 
-    print(f"Сумма: {total_cost:.2f}")
+    print(f"\nСумма: {total_cost:.2f}")
 
 if __name__ == "__main__":
     main()
