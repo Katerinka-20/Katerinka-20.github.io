@@ -1,32 +1,55 @@
-months = ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"]
-
-def get_month_number(month_str):
-    return months.index(month_str) + 1
-
-def is_valid_date(date_str):
-    parts = date_str.split('.')
-    if len(parts) == 3:
-        day, month, year = parts
-        if month.isdigit():
-            month = int(month)
-            if month < 1 or month > 12:
+def is_valid_date(day, month, year):
+    # Проверяем корректность дня, месяца и года
+    if month < 1 or month > 12:
+        return False
+    if day < 1 or day > 31:
+        return False
+    if year < 1:
+        return False
+    # Проверяем корректность дня в зависимости от месяца
+    if month in [4, 6, 9, 11] and day > 30:
+        return False
+    if month == 2:
+        if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+            if day > 29:
                 return False
-        else:
-            month = get_month_number(month)
-        if day.isdigit():
-            day = int(day)
-            if day < 1 or day > 31:
-                return False
-        if len(year) == 4 and year.isdigit():
-            return True
-    return False
+        elif day > 28:
+            return False
+    return True
 
 def convert_to_iso_date(date_str):
-    parts = date_str.split('.')
-    day, month, year = parts
-    if not month.isdigit():
-        month = str(get_month_number(month)).zfill(2)
-    else:
-        month = month.zfill(2)
-    day = day.zfill(2)
-    return f"{year}-{month}-{day}"
+    # Словарь для соответствия месяца его числовому представлению
+    months = {
+        "январь": 1, "февраль": 2, "март": 3, "апрель": 4,
+        "май": 5, "июнь": 6, "июль": 7, "август": 8,
+        "сентябрь": 9, "октябрь": 10, "ноябрь": 11, "декабрь": 12
+    }
+    try:
+        # Разбиваем строку на день, месяц и год
+        parts = date_str.split('.')
+        if len(parts) == 3:
+            day, month, year = int(parts[0]), int(parts[1]), int(parts[2])
+        else:
+            parts = date_str.split()
+            day, month, year = int(parts[0]), months[parts[1]], int(parts[2])
+        # Проверяем корректность введенной даты
+        if is_valid_date(day, month, year):
+            # Форматируем дату в ISO 8601
+            iso_date = f"{year:04d}-{month:02d}-{day:02d}"
+            return iso_date
+    except (ValueError, KeyError):
+        pass
+    return None
+
+def main():
+    while True:
+        date_str = input("Дата: ")
+        iso_date = convert_to_iso_date(date_str)
+        if iso_date:
+            print(f"Дата в формате ISO 8601: {iso_date}")
+            break
+        else:
+            print("Неправильный формат даты. Пожалуйста, введите снова.")
+
+if name == "__main__":
+    main()
