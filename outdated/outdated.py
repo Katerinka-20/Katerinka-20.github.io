@@ -46,10 +46,9 @@ def main():
         date_str = input("Дата: ")
         iso_date = convert_to_iso_date(date_str)
         if iso_date:
-            print(f"Дата в формате ISO 8601: {iso_date}")
+            print(f"{iso_date}")
             break
-        else:
-            print("Неправильный формат даты. Пожалуйста, введите снова.")
+
 
 if __name__ == "__main__":
     main()
