@@ -15,6 +15,8 @@ def convert_to_iso(date_str):
         year, month, day = parts
     else:
         raise ValueError("Неверный формат даты.")
+    if not (1 <= int(day) <= 31 and 1 <= int(month) <= 12):
+        raise ValueError("Неверный формат даты.")
     return f"{year}-{month:02}-{day:02}"
 
 def main():
@@ -24,7 +26,7 @@ def main():
             iso_date = convert_to_iso(date)
             print(iso_date)
             break
-        except (IndexError, ValueError):
+        except ValueError:
             print("Неверный формат даты. Пожалуйста, введите дату снова.")
 
 if __name__ == "__main__":
