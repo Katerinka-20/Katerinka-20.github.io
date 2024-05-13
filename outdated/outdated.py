@@ -31,11 +31,12 @@ def convert_to_iso_date(date_str):
     day = day.zfill(2)
     return f"{year}-{month}-{day}"
 
-while True:
-    date_input = input("Дата: ")
-    if is_valid_date(date_input):
-        iso_date = convert_to_iso_date(date_input)
-        print(iso_date)
-        break
-    else:
-        print("Неверный формат даты. Попробуйте снова.")
+# Временно закомментировано для запуска в среде без ввода данных
+ while True:
+     date_input = input("Дата: ")
+     if is_valid_date(date_input):
+         iso_date = convert_to_iso_date(date_input)
+         print(iso_date)
+         break
+     else:
+         print("Неверный формат даты. Попробуйте снова.")
