@@ -9,7 +9,7 @@ def calculate_fuel_percentage(fraction):
         elif percent >= 99:
             return 'F'
         else:
-            return percent
+            return str(percent) + '%'
     except ValueError:
         return None
     except ZeroDivisionError:
