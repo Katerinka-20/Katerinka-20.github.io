@@ -3,14 +3,16 @@ def get_month_number(month_name):
     return months.index(month_name) + 1
 
 def convert_to_iso(date_str):
-    if "." in date_str:
+    if "-" in date_str:
+        parts = date_str.split('-')
+    elif "." in date_str:
         parts = date_str.split('.')
     elif " " in date_str:
         parts = date_str.split()
     else:
-        parts = date_str.split("-")
+        raise ValueError("Неверный формат даты.")
     if len(parts) == 3:
-        day, month, year = parts
+        year, month, day = parts
     else:
         raise ValueError("Неверный формат даты.")
     return f"{year}-{month:02}-{day:02}"
