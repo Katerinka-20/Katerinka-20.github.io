@@ -13,5 +13,6 @@ try:
         dish = input("Блюдо: ").lower()
         if dish in menu:
             total_cost += menu[dish]
+            print(f"Блюдо: {dish.capitalize()}:")
 except EOFError:
     print(f"Сумма: {total_cost:.2f}")
